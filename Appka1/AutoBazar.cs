@@ -190,6 +190,7 @@ namespace Appka1
                             carList[i].Doors =CorrectDoors ();
                             SaveToFile();
                             break;
+
                         case 8:
                             Console.WriteLine("Ideš zmeniť mesto predaja " + carList[i].City + " na:");
                             carList[i].City = Console.ReadLine();
