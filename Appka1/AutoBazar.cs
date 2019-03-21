@@ -13,7 +13,9 @@ namespace Appka1
         private List<Auto> carList = new List<Auto>();
 
 
-
+        /// <summary>
+        ///  V prípade ak súbor neexistuje metóda ho vytvorí. Načítanie dát zo súboru do reťazca, jeho rozbitie a následné priradenie hodnôt konkrétnym vlastnostiam auta. 
+        /// </summary>
         public void LoadFile()
         {
             if (!File.Exists("bazos.txt"))
@@ -45,13 +47,17 @@ namespace Appka1
             
             
         }
-       
 
+       /// <summary>
+       /// Konštruktor autobazaru - načítanie dát zo súboru
+       /// </summary>
         public AutoBazar()
         {
             LoadFile();
         }
-
+        /// <summary>
+        /// Výpis každeho prvku v carliste
+        /// </summary>
         public void Vypis()
         {
             foreach (var item in carList)
@@ -61,7 +67,7 @@ namespace Appka1
         }
 
         /// <summary>
-        /// 
+        /// získavanie posledného Id z carlistu, návratová hodnota je o 1 vyššia ako posledné Id - v prípade prázdneho súboru sa nastaví Id na hodnotu 1
         /// </summary>
         /// <param name="carList"></param>
         /// <returns></returns>
@@ -79,7 +85,10 @@ namespace Appka1
                 return lastId;
             }
         }
-
+        /// <summary>
+        /// Vymazanie položky z carlistu na základe Id- po vymazaní sa uložia nové dáta do súboru
+        /// </summary>
+        /// <param name="delCar"></param>
         public void DeleteCar(int delCar)
         {
             for (int i = 0; i < carList.Count; i++)
@@ -92,7 +101,10 @@ namespace Appka1
                 }
             }
         }
-
+        /// <summary>
+        /// Editovanie položky v carliste- po editovaní sa uložia nové dáta do súboru
+        /// </summary>
+        /// <param name="updCar"></param>
         public void UpdateCar(int updCar)
         {
             for (int i = 0; i < carList.Count; i++)
@@ -101,7 +113,7 @@ namespace Appka1
                 {
                     Console.WriteLine("Zmena : 1- Značka, 2-Typ auta, 3- Typ paliva,4- Rok výroby ,5- Najazdené km, 6- Cena, 7- Počet dverí, 8- Miesto predaja, 9- Havarované, 0-žiadna zmena");
                     int cUpd = ReadCorrectIntValue();
-                    bool correctValue = true;
+                   
                     switch (cUpd)
                     {
                         case 1:
@@ -157,6 +169,10 @@ namespace Appka1
                 }
             }
         }
+        /// <summary>
+        /// načítanie číselnej(int) hodnoty z konzoly - ošetrenie v prípade nezadania hodnoty - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         public int ReadCorrectIntValue()
         {
             bool isOk = false;
@@ -172,7 +188,10 @@ namespace Appka1
             }
             return ret;
         }
-
+        /// <summary>
+        /// načítanie číselnej(double) hodnoty z konzoly - ošetrenie v prípade nezadania hodnoty - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         public double ReadCorrectDoubleValue()
         {
             bool isOk = false;
@@ -188,6 +207,10 @@ namespace Appka1
             }
             return ret;
         }
+        /// <summary>
+        /// Načítanie textu z konzoly - ošetrenie v prípade nezadania hodnoty - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         private string CorrectString()
         {
             while (true)
@@ -201,7 +224,10 @@ namespace Appka1
                 { Console.WriteLine("Je potrebné zadať text"); }
             }
         }
-
+        /// <summary>
+        /// Metóoda ošetrujúca zadanie roku v správnom intervale - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         private int CorrectYear()
         {
             while (true)
@@ -215,6 +241,10 @@ namespace Appka1
                 else { Console.WriteLine("Rok musí byť od 1870 až po aktuálny rok"); }
             }
         }
+        /// <summary>
+        /// Metóoda ošetrujúca zadanie počtu kilometrov- nepovoluje mínosovú hodnotu - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         private int CorrectMileAge()
         {
             while (true)
@@ -228,6 +258,10 @@ namespace Appka1
                 else { Console.WriteLine("Kilometre nemôžu byť mínusová hodnota"); }
             }
         }
+        /// <summary>
+        /// Metóoda ošetrujúca zadanie počtu dverí v správnom intervale - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         private int CorrectDoors()
         {
             while (true)
@@ -242,7 +276,10 @@ namespace Appka1
                 { Console.WriteLine("Počet dverí môže byť 2,3,4 alebo 5"); }
             }
         }
-
+        /// <summary>
+        /// Metóoda ošetrujúca zadanie stavu auta - A-áno alebo N-nie - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         private bool CorrectCondition()
         {
             while (true)
@@ -262,7 +299,10 @@ namespace Appka1
                 Console.WriteLine("Zadaj A-áno alebo N-nie");
             }
         }
-
+        /// <summary>
+        /// Metóoda ošetrujúca zadanie správneho názvu paliva - s návratovou hodnotou
+        /// </summary>
+        /// <returns></returns>
         private FuelType CorrectFuel()
         {
 
@@ -297,7 +337,9 @@ namespace Appka1
         }
 
 
-        //bool correct = true;
+        /// <summary>
+        /// V danej métode sa vytvorí inštacia typu auto, a pridá jednotlivé hodnoty pre vlastnosti auta, po pridaní sa auto vloží do carlistu a ten sa uloží do súboru
+        /// </summary>
         public void AddCar()
         {
             Auto car = new Auto(GetNextId(carList));
@@ -332,7 +374,9 @@ namespace Appka1
             carList.Add(car);
             SaveToFile();
         }
-
+        /// <summary>
+        /// Metóda najprv vymaže súbor a následne doňho vloží každú položku z carlistu
+        /// </summary>
         public void SaveToFile()
         {
             File.Delete("bazos.txt");

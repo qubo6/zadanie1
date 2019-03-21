@@ -12,7 +12,7 @@ namespace Appka1
         static void Main(string[] args)
         {
 
-
+            ///vytvorenie inštancie typu autobazar
             AutoBazar autoBazar = new AutoBazar();
             bool exit = true;
 
@@ -30,12 +30,12 @@ namespace Appka1
                 switch (autoBazar.ReadCorrectIntValue())
                 {
                     case 1:
-                        Console.Clear();
+                        
                         autoBazar.AddCar();
                         Console.WriteLine("Auto bolo pridané");
                         break;
                     case 2:
-                        Console.Clear();
+                        
                         autoBazar.Vypis();
                         break;
                     case 3:
