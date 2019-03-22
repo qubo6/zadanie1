@@ -21,7 +21,7 @@ namespace Appka1
                 
                 Console.WriteLine("********************");
                 Console.WriteLine("1    -Pridaj auto");
-                Console.WriteLine("2    -Vypis zoznamu aut");
+                Console.WriteLine("2    -Vypis zoznamu aut/nacitanie zo suboru");
                 Console.WriteLine("3    -Vymaz auto");
                 Console.WriteLine("4    -Zmena parametrov");
                 Console.WriteLine("5    -Uloženie dát do súboru");
